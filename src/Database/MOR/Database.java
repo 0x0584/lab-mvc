@@ -10,12 +10,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/* this class is a way to execute query using exec method
+ * database should eb configured using Config class */
 public class Database {
 	private Connection connection;
 	private Statement state;
 
-	public Database() {
-		
+	public Database() throws ClassNotFoundException, SQLException {
+		this(Config.d_cfg);
 	}
 	
 	public Database(Config cfg) throws SQLException, ClassNotFoundException {

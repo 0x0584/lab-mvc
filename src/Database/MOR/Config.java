@@ -1,5 +1,7 @@
 package Database.MOR;
 
+/* this is the configuration class this is basically a way to connect
+ * to a database easily; this class holds some useful variables */
 public class Config {
 	public static String driver = "com.mysql.jdbc.Driver";
 	public static String format = "jdbc:mysql://%s:%s/%s";
@@ -19,14 +21,15 @@ public class Config {
 	public Config(String dbname) {
 		this.dbname = dbname;
 	}
-	
+
 	public Config(String user, String pwd, String dbname) {
 		this.dbname = dbname;
 		this.user = user;
 		this.pwd = pwd;
 	}
+
 	public String getConnectionString() {
 		return String.format(format, server, port, dbname);
 	}
-	
+
 }

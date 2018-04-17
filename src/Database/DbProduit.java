@@ -4,29 +4,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Database.MOR.Config;
 import Database.MOR.Database;
 import Metier.Produit;
 
+/* this is a direct connection between the tp_db */
 public class DbProduit {
-	private static Database db;
 	private static String query;
 
 	public DbProduit() throws ClassNotFoundException, SQLException {
-		db = new Database(Config.d_cfg);
+	}
+	/* product2row */
+	public static void addProduit(Produit p) throws SQLException, ClassNotFoundException {
+		query = "insert into Product(design, prix, qte) values ('" + p.getDes()
+				+ "'," + p.getPrix() + "," + p.getQte() + ")";
+		new Database().exec(query, true);
 	}
 
-	public static void addProduit(Produit p) throws SQLException {
-		query = "insert into Product(design, prix, qte) values (" + p.getDes()
-				+ "," + p.getPrix() + "," + p.getQte() + ")";
-		db.exec(query, true);
-	}
-
-	public static ArrayList<Produit> getProduits() throws SQLException {
+	public static ArrayList<Produit> getProduits() throws SQLException, ClassNotFoundException {
 		ArrayList<Produit> list = new ArrayList<Produit>();
 
 		query = "SELECT * FROM Product";
-		ResultSet res = db.exec(query, false);
+		ResultSet res = new Database().exec(query, false);
 
 		while (res.next()) {
 			list.add(new Produit(res.getLong("ref"), res.getString("design"),
