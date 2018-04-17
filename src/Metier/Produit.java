@@ -3,9 +3,17 @@ package Metier;
 public class Produit {
 	private Long ref;
 	private String des;
-	private double prix;
+	private float prix;
 	private int qte;
 	
+	public Produit(Long ref, String des, float prix, int qte) {
+		super();
+		this.ref = ref;
+		this.des = des;
+		this.prix = prix;
+		this.qte = qte;
+	}
+
 	public Produit() {
 		super();
 	}
@@ -30,7 +38,7 @@ public class Produit {
 		return prix;
 	}
 
-	public void setPrix(double prix) {
+	public void setPrix(float prix) {
 		this.prix = prix;
 	}
 
@@ -50,6 +58,4 @@ public class Produit {
 				+ getQte() + ", getClass()=" + getClass() + ", hashCode()="
 				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	
-	
 }

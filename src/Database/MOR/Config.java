@@ -1,4 +1,4 @@
-package Database;
+package Database.MOR;
 
 public class Config {
 	public static String driver = "com.mysql.jdbc.Driver";

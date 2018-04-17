@@ -1,4 +1,4 @@
-package Database;
+package Database.MOR;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
